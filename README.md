@@ -89,9 +89,11 @@ for img_name in arquivos:
     
     print(f" {img_name} | Resultado: {status} ({num_pessoas} pessoas detectadas)")
 
-    # OPCIONAL: Mostrar a primeira imagem com o desenho da detecção para conferir
     if img_name == arquivos[0]:
         v = Visualizer(img[:, :, ::-1], MetadataCatalog.get(cfg.DATASETS.TRAIN[0]), scale=0.8)
         out = v.draw_instance_predictions(instances.to("cpu"))
         print("\nExemplo visual da primeira imagem:")
         cv2_imshow(out.get_image()[:, :, ::-1])
+
+Resultado :<img width="409" height="409" alt="download" src="https://github.com/user-attachments/assets/d0ca45f4-7946-4803-9d0e-a4748ac10132" />
+
