@@ -97,3 +97,7 @@ for img_name in arquivos:
 
 Resultado :<img width="409" height="409" alt="download" src="https://github.com/user-attachments/assets/d0ca45f4-7946-4803-9d0e-a4748ac10132" />
 
+<img width="409" height="409" alt="download" src="https://github.com/user-attachments/assets/a4cc240e-f51c-490b-a7a3-623b3d28cca2" />
+
+<img width="409" height="409" alt="download" src="https://github.com/user-attachments/assets/177e9e10-c273-4bf6-aec7-f66597c8af0a" />
+
