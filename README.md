@@ -16,16 +16,19 @@ com algumas outras ferramentas.
 ---
 # DETECTRON2
 1. INSTALAÇÃO
-'''  
+ 
 !pip install -U torch torchvision torchaudio
 !pip install -U 'git+https://github.com/facebookresearch/detectron2.git'
 
 ---
 2. PERMISSÃO PARA USAR O DRIVE
+
 from google.colab import drive
 drive.mount('/content/drive')
+
 ---
 3.VALIDAÇÃO 
+
 def avaliar_dataset(dataset_path, predictor):
     y_true = []
     y_pred = []
@@ -55,13 +58,16 @@ def avaliar_dataset(dataset_path, predictor):
     return y_true, y_pred
 ---
 4. VERIFICAÇÃO DO DRIVE
+
 import os
 from google.colab import drive
 drive.mount('/content/drive')
 
 !ls "/content/drive/MyDrive/Projeto_IA/imagens"
+
 ---
 5. PROCESSAMENTO DOS DADOS
+
 import os
 import cv2
 import torch
@@ -119,6 +125,7 @@ for img_name in arquivos:
 print("\nProcessamento concluído. As imagens foram salvas em 'drive/Mydrive/Projeto_IA/results/images'.")
 ---
 6. TREINAMENTO
+
 import os
 import torch
 from detectron2.data.datasets import register_coco_instances
@@ -173,6 +180,7 @@ if __name__ == "__main__":
 ---
 
 7. DIAGNÓSTICO
+
 import os
 import cv2
 from google.colab import drive
@@ -240,8 +248,10 @@ else:
         # cv2_imshow(result_img) 
 
     print("\nProcessamento concluído.")
+    
 ---
 8. MÉTRICAS
+
 import os
 import cv2
 import matplotlib.pyplot as plt
