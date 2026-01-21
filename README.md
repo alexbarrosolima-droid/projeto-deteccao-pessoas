@@ -3,18 +3,23 @@
 Esse projeto é referente ao detectron2 para a disciplina de IA. Os autores desse projeto são Alexandre Barroso Lima 570524 e João Pedro Lima de Moura 570446.
 O projeto tem como objetivo a implementação do detectron2 para a monitoração, nesse modelo avaliamos a ocupação da sala de estudo. O sistema identifica e classifica a sala como vazio ou ocupado, assim, permitindo uma melhora na gestão desse espaço.
 A relação dele com a segurança da informação é simples, com a implementação do detectron2 pode ser realizado logs de presenças, pois estaria sendo monitorado, prevenção de incidentes, se por acaso expancionados para objetos perigosos o sistema emitir um alerta avisando o risco, e resposta a incidentes já que facilitaria a determinar o que ou quem causou o dano.
+
 ---
-##AMBIENTE
+# AMBIENTE
+
 O ambiente foi a sala de estudos,para visualizar se a sala está vazia ou ocupada. Mas para o desenvolvimento do projeto o trabalho foi feito no colab, com o ambiente de execução na "gpu:t4"
 com algumas outras ferramentas. 
     Linguagem : Python
     Dataset : roboflow
     Modelo : faster r cnn
+    
 ---
-##DETECTRON2
+# DETECTRON2
 1. INSTALAÇÃO
+'''  
 !pip install -U torch torchvision torchaudio
 !pip install -U 'git+https://github.com/facebookresearch/detectron2.git'
+
 ---
 2. PERMISSÃO PARA USAR O DRIVE
 from google.colab import drive
