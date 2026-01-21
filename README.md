@@ -15,20 +15,21 @@ com algumas outras ferramentas.
     
 ---
 # DETECTRON2
-1. INSTALAÇÃO
- 
+1. INSTALAÇÃO: A parte do código que deve acontecer a instalação do detectron2
+```
 !pip install -U torch torchvision torchaudio
 !pip install -U 'git+https://github.com/facebookresearch/detectron2.git'
-
+```
 ---
-2. PERMISSÃO PARA USAR O DRIVE
-
+2. PERMISSÃO PARA USAR O DRIVE : Aqui ele pede permissão para pasta do drive onde tem as imagens rotuladas
+```
 from google.colab import drive
+
 drive.mount('/content/drive')
-
+```
 ---
-3.VALIDAÇÃO 
-
+3.VALIDAÇÃO : Essa parte do código faz com que os dados sejam validados para dizer que o modelo aprendeu.
+```
 def avaliar_dataset(dataset_path, predictor):
     y_true = []
     y_pred = []
@@ -56,18 +57,19 @@ def avaliar_dataset(dataset_path, predictor):
             y_pred.append(rotulo_pred)
 
     return y_true, y_pred
+```
 ---
-4. VERIFICAÇÃO DO DRIVE
-
+4. VERIFICAÇÃO DO DRIVE : Esse proceso é apenas para conferir se o drive tem todas as imagens e se ele está realmente conectado.
+```
 import os
 from google.colab import drive
 drive.mount('/content/drive')
 
 !ls "/content/drive/MyDrive/Projeto_IA/imagens"
-
+```
 ---
-5. PROCESSAMENTO DOS DADOS
-
+5. PROCESSAMENTO DOS DADOS : Esse é o código do modelo pré-treinado.
+```
 import os
 import cv2
 import torch
@@ -123,9 +125,11 @@ for img_name in arquivos:
     cv2.imwrite(save_path, result_img)
 
 print("\nProcessamento concluído. As imagens foram salvas em 'drive/Mydrive/Projeto_IA/results/images'.")
----
-6. TREINAMENTO
+```
 
+---
+6. TREINAMENTO : Aqui onde ele passa de um modelo pré-treinado para um modelo no nosso ambiente.
+```
 import os
 import torch
 from detectron2.data.datasets import register_coco_instances
@@ -177,10 +181,11 @@ if __name__ == "__main__":
     trainer.train()
 
     print(f" Treinamento concluído! O modelo foi salvo em: {cfg.OUTPUT_DIR}/model_final.pth")
+```
 ---
 
-7. DIAGNÓSTICO
-
+7. DIAGNÓSTICO : Aqui ele vai melhorar os erros, se teve alguns.
+```
 import os
 import cv2
 from google.colab import drive
@@ -248,10 +253,10 @@ else:
         # cv2_imshow(result_img) 
 
     print("\nProcessamento concluído.")
-    
+```    
 ---
-8. MÉTRICAS
-
+8. MÉTRICAS : Apesar da validação, essas métricas são necessárias para a visualização do gráfico de matriz de confusão e a acurácia.
+```
 import os
 import cv2
 import matplotlib.pyplot as plt
@@ -322,12 +327,31 @@ else:
         print(classification_report(y_true, y_pred, target_names=['Vazia', 'Ocupada'], labels=[0, 1], zero_division=0))
     else:
         print(" Nenhuma imagem encontrada na pasta.")
+```
 ---
 
-##RESULTADOS
- :<img width="409" height="409" alt="download" src="https://github.com/user-attachments/assets/d0ca45f4-7946-4803-9d0e-a4748ac10132" />
+# RESULTADOS
+exemplo:
+<img width="409" height="409" alt="download" src="https://github.com/user-attachments/assets/d0ca45f4-7946-4803-9d0e-a4748ac10132" />
 
 <img width="409" height="409" alt="download" src="https://github.com/user-attachments/assets/a4cc240e-f51c-490b-a7a3-623b3d28cca2" />
 
 <img width="409" height="409" alt="download" src="https://github.com/user-attachments/assets/177e9e10-c273-4bf6-aec7-f66597c8af0a" />
+
+exemplo:
+<img width="1435" height="833" alt="image" src="https://github.com/user-attachments/assets/888861cb-a16b-4569-8a82-456aea5dd09b" />
+
+matriz de confusão x acurácia : 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/e9a3caf5-1a40-4598-8948-34e4a4e55de6" />
+
+---
+# DISCUSSÃO NA SEGURANÇA DA INFORMAÇÃO
+1. Monitoramento : O detectron2 pode ser utulizado como logs para se fazer auditoria, como o projeto foi como se a sala está vazia ou ocupada, ele poderia emitir um alerta se fora de horário permitido a sala está em uso ou não.
+
+2. Detecção de pessoas : Alguns sistemas de alarmes de intrusão utilizam os movimentos, ou o calor para a detecção, mas com o detectron2, esse sistema seria exclusivo para pessoas, ao invés de disparar com alarmes falsos de animais.
+
+3. Sala sensíveis : Com o detectron2 pode ser feito ativamento a monitoria e auditoria de quem tem acesso a sala sensíveis como servidores,e disparar alarmes se houver pessoas fora do horário de serviço.
+
+4. Resposta a incidentes/acidentes : Ao invés de olhar várias horas de filmagem, assim que um acidente ou incidente acontecer, o detectron2 imitiria um alerta, facilitando a auditoria. 
+
 
